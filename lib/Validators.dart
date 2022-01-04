@@ -1,14 +1,13 @@
 import 'dart:async';
 
 mixin Validators {
-
-  //---- Password validation
-  var passwordValidator = StreamTransformer<String, String>.fromHandlers(
-      handleData: (password, sink) {
-        if (password.trim().length >= 3) {
-          sink.add(password);
-        } else {
-          sink.addError('Your password should be more then 3 char long');
-        }
-      });
+  //---- length validation
+  var lengthValidator =
+      StreamTransformer<String, String>.fromHandlers(handleData: (str, sink) {
+    if (str.length >= 3 && str.length <= 11) {
+      sink.add(str);
+    } else {
+      sink.addError('Should be more than 3 char and less than 11 char long');
+    }
+  });
 }

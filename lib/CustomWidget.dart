@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'constants.dart';
 
@@ -31,21 +32,71 @@ class CustomWidget {
             maxWidth: 25,
           ),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: kTextFieldBorderColor, width: kTextFieldWidth),
+              borderSide:
+                  BorderSide(color: kPrimaryColor, width: kTextFieldWidth),
               borderRadius: BorderRadius.circular(6.0)),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: kTextFieldBorderColor, width: kTextFieldWidth),
               borderRadius: BorderRadius.circular(6.0)),
+          disabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: kTextFieldBorderColor, width: kTextFieldWidth),
+              borderRadius: BorderRadius.circular(6.0)),
+          focusedErrorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: kErrorTextFieldColor, width: kTextFieldWidth),
+              borderRadius: BorderRadius.circular(6.0)),
+          errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: kErrorTextFieldColor, width: kTextFieldWidth),
+              borderRadius: BorderRadius.circular(6.0)),
           focusColor: kPrimaryColor,
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey.shade400),
-          errorStyle: TextStyle(color: Colors.red.shade400, fontSize: 11),
+          hintStyle: TextStyle(color: kHintColorTextField),
+          errorStyle: TextStyle(color: kErrorTextFieldColor, fontSize: 11),
           counterText: "",
           errorText: errorText,
+          /*border: new OutlineInputBorder(
+            borderSide: BorderSide(width: kTextFieldWidth),
+            borderRadius: new BorderRadius.circular(6.0),
+          ),*/
           contentPadding: EdgeInsets.only(left: 15, right: 15)),
       obscureText: obscureText,
     );
+  }
+
+  getCustomToast(BuildContext context, String msg,
+      {Color backgroundColor = kPrimaryColor}) {
+    return Fluttertoast.showToast(
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: backgroundColor,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
+  getCustomAlertDialog(BuildContext context, String title, String msg,
+      {bool isRetry, Function onRetryPressed}) async {
+    await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => WillPopScope(
+              onWillPop: () {},
+              child: new AlertDialog(
+                title: new Text('${title}'),
+                content: Text('${msg}'),
+                actions: <Widget>[
+                  new FlatButton(
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true)
+                          .pop(); // dismisses only the dialog and returns nothing
+                    },
+                    child: new Text('Ok'),
+                  )
+                ],
+              ),
+            ));
   }
 }

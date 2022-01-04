@@ -8,13 +8,8 @@ class PreferenceUtils {
   static SharedPreferences _prefs;
   static Lock _lock = Lock();
 
-  static String KEY_CUSTOMER_INFO = "KEY_CUSTOMER_INFO";
-  static String KEY_CUSTOMER_NOTIFICATION = "KEY_CUSTOMER_NOTIFICATION";
-  static String KEY_AUTHENTICATE = "KEY_AUTHENTICATE";
-  static String KEY_CUSTOMER_TOKEN = "KEY_CUSTOMER_TOKEN";
-  static String KEY_ADMIN_TOKEN = "KEY_ADMIN_TOKEN";
-  static String KEY_USER_LANGUAGE = "KEY_USER_LANGUAGE";
-  static String KEY_CUSTOMER_WISH_LIST = "KEY_CUSTOMER_WISH_LIST";
+  static String KEY_CUSTOMER_USERNAME = "KEY_CUSTOMER_USERNAME";
+  static String KEY_CUSTOMER_PASSWORD = "KEY_CUSTOMER_PASSWORD";
 
   static Future<PreferenceUtils> getInstance() async {
     if (_singleton == null) {

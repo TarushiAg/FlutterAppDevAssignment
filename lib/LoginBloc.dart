@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_developer_assignment/credentials.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'Response.dart';
@@ -18,9 +19,9 @@ class LoginBloc extends Object with Validators {
   Function(String) get passwordChange => passwordController.sink.add;
 
   Stream<String> get username =>
-      usernameController.stream.transform(passwordValidator);
+      usernameController.stream.transform(lengthValidator);
   Stream<String> get password =>
-      passwordController.stream.transform(passwordValidator);
+      passwordController.stream.transform(lengthValidator);
 
   Stream<bool> get loginCheck => _validateAllStreamsHaveDataAndNoErrors.status;
 
@@ -29,14 +30,20 @@ class LoginBloc extends Object with Validators {
         ValidateAllStreamsHaveDataAndNoErrors()..listen([username, password]);
   }
 
-  //---- get login Data
-  getLoginData() async {
+  //---- login
+  tryLogin() async {
     if (loginFetcher.isClosed) {
       loginFetcher = new BehaviorSubject<Response<dynamic>>();
     }
     try {
-      // loginFetcher.sink.add(
-      //     Response.completed(LoginFnacResponseModel.fromJson(responseModel)));
+      String username = usernameController.value;
+      String password = passwordController.value;
+
+      Credentials.usernamePasswordMap.containsKey(username)
+          ? Credentials.usernamePasswordMap[username] == password
+              ? loginFetcher.sink.add(Response.completed(true))
+              : loginFetcher.sink.add(Response.completed(false))
+          : loginFetcher.sink.add(Response.completed(false));
     } catch (e) {
       loginFetcher.sink.add(Response.error(e.toString()));
       print(e);

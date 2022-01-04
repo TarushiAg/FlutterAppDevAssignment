@@ -1,8 +1,6 @@
 import 'package:app_developer_assignment/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'HomeScreen.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -24,4 +22,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
