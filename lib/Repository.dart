@@ -18,4 +18,16 @@ class Repository {
     );
     return response;
   }
+
+  //Get user details
+  Future<dynamic> getUserDetails() async {
+    final response = await _apiProvider.get(
+      'https://userdetails.free.beeceptor.com',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    );
+    return response;
+  }
 }

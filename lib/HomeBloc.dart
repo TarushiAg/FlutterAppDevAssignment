@@ -12,8 +12,11 @@ class HomeBloc {
   Repository repository = Repository();
   StreamController recommendationController =
       new BehaviorSubject<Response<dynamic>>();
+  StreamController userDetailController =
+      new BehaviorSubject<Response<dynamic>>();
 
   Stream<dynamic> get recommedationStream => recommendationController.stream;
+  Stream<dynamic> get userStream => userDetailController.stream;
 
   //---- get recommendations
   fetchRecommendation(String cursor) async {
@@ -27,12 +30,26 @@ class HomeBloc {
       recommendationController.sink.add(Response.error(e.toString()));
       print(e);
     }
-    /*finally {
-      recommendationController.close();
-    }*/
+  }
+
+  //---- get user detaials
+  getUserDetails() async {
+    if (userDetailController.isClosed) {
+      userDetailController = new BehaviorSubject<Response<dynamic>>();
+    }
+    try {
+      dynamic response = await repository.getUserDetails();
+      userDetailController.sink.add(Response.completed(response));
+    } catch (e) {
+      userDetailController.sink.add(Response.error(e.toString()));
+      print(e);
+    } finally {
+      userDetailController.close();
+    }
   }
 
   dispose() {
     recommendationController?.close();
+    userDetailController?.close();
   }
 }
