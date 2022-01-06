@@ -34,7 +34,9 @@ dependencies:
   #https://pub.dev/packages/cached_network_image/install
   cached_network_image: ^2.3.3
 
-  infinite_scroll_pagination: ^2.3.0
+#  infinite_scroll_pagination: ^2.3.0
+
+  lazy_load_scrollview: ^1.2.0
 
 dev_dependencies:
   flutter_test:

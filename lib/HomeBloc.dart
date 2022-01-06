@@ -16,19 +16,20 @@ class HomeBloc {
   Stream<dynamic> get recommedationStream => recommendationController.stream;
 
   //---- get recommendations
-  fetchRecommendation() async {
+  fetchRecommendation(String cursor) async {
     if (recommendationController.isClosed) {
       recommendationController = new BehaviorSubject<Response<dynamic>>();
     }
     try {
-      dynamic response = await repository.getRecommendation();
+      dynamic response = await repository.getRecommendation(cursor);
       recommendationController.sink.add(Response.completed(response));
     } catch (e) {
       recommendationController.sink.add(Response.error(e.toString()));
       print(e);
-    } finally {
-      recommendationController.close();
     }
+    /*finally {
+      recommendationController.close();
+    }*/
   }
 
   dispose() {
