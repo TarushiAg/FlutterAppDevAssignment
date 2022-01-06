@@ -43,9 +43,15 @@ class HomeBloc {
     } catch (e) {
       userDetailController.sink.add(Response.error(e.toString()));
       print(e);
-    } finally {
-      userDetailController.close();
     }
+  }
+
+  clearRecommendationStream() {
+    recommendationController.sink.add(null);
+  }
+
+  clearUserStream() {
+    userDetailController.sink.add(null);
   }
 
   dispose() {

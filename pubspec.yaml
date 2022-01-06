@@ -38,6 +38,8 @@ dependencies:
 
   lazy_load_scrollview: ^1.2.0
 
+  loading_indicator: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

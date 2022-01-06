@@ -19,26 +19,35 @@ class Error extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            errorMessage,
-            //AppLocalizations.of(context).translate('progress_something'),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: textColor,
-              fontSize: 18,
+      child: Container(
+        margin: EdgeInsets.all(8),
+        color: Colors.grey.shade300,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              errorMessage,
+              //AppLocalizations.of(context).translate('progress_something'),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18,
+              ),
             ),
-          ),
-          SizedBox(height: 8),
-          if (visible)
-            RaisedButton(
-              color: Colors.white,
-              child: Text("Retry", style: TextStyle(color: Colors.black)),
-              onPressed: onRetryPressed,
-            )
-        ],
+            SizedBox(height: 8),
+            if (visible)
+              Column(
+                children: [
+                  RaisedButton(
+                    color: Colors.white,
+                    child: Text("Retry", style: TextStyle(color: Colors.black)),
+                    onPressed: onRetryPressed,
+                  ),
+                ],
+              )
+          ],
+        ),
       ),
     );
   }
