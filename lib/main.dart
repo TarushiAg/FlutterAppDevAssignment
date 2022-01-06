@@ -1,7 +1,12 @@
+import 'package:app_developer_assignment/HomeScreen.dart';
 import 'package:app_developer_assignment/LoginScreen.dart';
+import 'package:app_developer_assignment/SharedPreferenceUtils.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferenceUtils.getInstance();
+
   runApp(MyApp());
 }
 
@@ -12,13 +17,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SafeArea(child: LoginScreen()),
+      home: SafeArea(
+          child: PreferenceUtils.getString(
+                          PreferenceUtils.KEY_CUSTOMER_USERNAME) ==
+                      null ||
+                  PreferenceUtils.getString(
+                          PreferenceUtils.KEY_CUSTOMER_USERNAME) ==
+                      ""
+              ? LoginScreen()
+              : HomeScreen()),
     );
   }
 }

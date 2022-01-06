@@ -2,6 +2,8 @@ import 'package:app_developer_assignment/CustomWidget.dart';
 import 'package:app_developer_assignment/LoginBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:app_developer_assignment/HomeScreen.dart';
+
 
 import 'Response.dart';
 import 'SharedPreferenceUtils.dart';
@@ -167,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     MaterialPageRoute(
                                                       builder: (BuildContext
                                                               context) =>
-                                                          Scaffold(),
+                                                          HomeScreen(),
                                                     ),
                                                     (Route route) => false,
                                                   );

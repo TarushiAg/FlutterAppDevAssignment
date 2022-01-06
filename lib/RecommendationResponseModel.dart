@@ -1,11 +1,11 @@
-class RecommendationModel {
+class RecommendationResponseModel {
   int code;
   Data data;
   bool success;
 
-  RecommendationModel({this.code, this.data, this.success});
+  RecommendationResponseModel({this.code, this.data, this.success});
 
-  RecommendationModel.fromJson(Map<String, dynamic> json) {
+  RecommendationResponseModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     success = json['success'];
