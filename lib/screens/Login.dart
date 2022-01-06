@@ -1,13 +1,11 @@
-import 'package:app_developer_assignment/CustomWidget.dart';
-import 'package:app_developer_assignment/LoginBloc.dart';
+import 'package:app_developer_assignment/util/CustomWidget.dart';
+import 'package:app_developer_assignment/blocs/LoginBloc.dart';
+import 'package:app_developer_assignment/util/Response.dart';
+import 'package:app_developer_assignment/util/SharedPreferenceUtils.dart';
+import 'package:app_developer_assignment/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:app_developer_assignment/HomeScreen.dart';
-
-
-import 'Response.dart';
-import 'SharedPreferenceUtils.dart';
-import 'constants.dart';
+import 'package:app_developer_assignment/screens/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -48,20 +46,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*RichText(
-                        text: TextSpan(children: [
-                      TextSpan(
-                          text: "Username",
-                          style: TextStyle(
-                              color: kBlackColor, fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text: " *",
-                          style: TextStyle(
-                              color: Colors.red, fontWeight: FontWeight.bold))
-                    ])),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),*/
                     StreamBuilder<String>(
                         stream: loginBloc.username,
                         builder: (context, snapshot) {
@@ -86,20 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /*RichText(
-                        text: TextSpan(children: [
-                      TextSpan(
-                          text: "Password",
-                          style: TextStyle(
-                              color: kBlackColor, fontWeight: FontWeight.bold)),
-                      TextSpan(
-                          text: " *",
-                          style: TextStyle(
-                              color: Colors.red, fontWeight: FontWeight.bold))
-                    ])),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.01,
-                    ),*/
                     StreamBuilder<String>(
                         stream: loginBloc.password,
                         builder: (context, snapshot) {
@@ -173,10 +143,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     ),
                                                     (Route route) => false,
                                                   );
-                                                  /*CustomWidget().getCustomToast(
-                                                  context, "Welcome!",
-                                                  backgroundColor:
-                                                      kSuccessColor);*/
                                                 } else {
                                                   CustomWidget().getCustomAlertDialog(
                                                       context,

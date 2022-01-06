@@ -1,6 +1,6 @@
-import 'package:app_developer_assignment/HomeScreen.dart';
-import 'package:app_developer_assignment/LoginScreen.dart';
-import 'package:app_developer_assignment/SharedPreferenceUtils.dart';
+import 'package:app_developer_assignment/screens/HomeScreen.dart';
+import 'package:app_developer_assignment/screens/Login.dart';
+import 'package:app_developer_assignment/util/SharedPreferenceUtils.dart';
 import 'package:flutter/material.dart';
 
 void main() async {

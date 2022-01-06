@@ -66,17 +66,6 @@ class CustomWidget {
     );
   }
 
-  getCustomToast(BuildContext context, String msg,
-      {Color backgroundColor = kPrimaryColor}) {
-    return Fluttertoast.showToast(
-        msg: msg,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: backgroundColor,
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
-
   getCustomAlertDialog(BuildContext context, String title, String msg,
       {bool isRetry, Function onRetryPressed}) async {
     await showDialog(

@@ -1,14 +1,14 @@
-import 'package:app_developer_assignment/HomeBloc.dart';
-import 'package:app_developer_assignment/RecommendationResponseModel.dart';
-import 'package:app_developer_assignment/UserDetailResponseModel.dart';
-import 'package:app_developer_assignment/constants.dart';
+import 'package:app_developer_assignment/blocs/HomeBloc.dart';
+import 'package:app_developer_assignment/models/RecommendationResponseModel.dart';
+import 'package:app_developer_assignment/models/UserDetailResponseModel.dart';
+import 'package:app_developer_assignment/util/Response.dart';
+import 'package:app_developer_assignment/util/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:app_developer_assignment/ErrorWidget.dart';
+import 'package:app_developer_assignment/util/ErrorWidget.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
-import 'Response.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);

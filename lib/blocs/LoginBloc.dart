@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:app_developer_assignment/credentials.dart';
+import 'package:app_developer_assignment/util/Response.dart';
+import 'package:app_developer_assignment/util/credentials.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'Response.dart';
-import 'ValidateStreams.dart';
-import 'Validators.dart';
+import '../util/ValidateStreams.dart';
+import '../util/Validators.dart';
 
 class LoginBloc extends Object with Validators {
   BehaviorSubject loginFetcher = new BehaviorSubject<Response<dynamic>>();

@@ -1,12 +1,8 @@
 import 'dart:async';
 
-import 'package:app_developer_assignment/Repository.dart';
-import 'package:app_developer_assignment/credentials.dart';
+import 'package:app_developer_assignment/util/Repository.dart';
+import 'package:app_developer_assignment/util/Response.dart';
 import 'package:rxdart/rxdart.dart';
-
-import 'Response.dart';
-import 'ValidateStreams.dart';
-import 'Validators.dart';
 
 class HomeBloc {
   Repository repository = Repository();

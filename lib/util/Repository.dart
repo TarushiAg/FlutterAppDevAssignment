@@ -22,7 +22,7 @@ class Repository {
   //Get user details
   Future<dynamic> getUserDetails() async {
     final response = await _apiProvider.get(
-      'https://userdetails.free.beeceptor.com',
+      'https://run.mocky.io/v3/6ade18d6-d4a8-4fe1-a8eb-af9f960c600a',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
