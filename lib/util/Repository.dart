@@ -22,7 +22,7 @@ class Repository {
   //Get user details
   Future<dynamic> getUserDetails() async {
     final response = await _apiProvider.get(
-      'https://run.mocky.io/v3/9f6115bb-73d2-4797-83f7-dd382c51b2a7',
+      'https://run.mocky.io/v3/3c015c15-d38c-4c51-9738-7692456c4d61',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
